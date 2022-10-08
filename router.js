@@ -1,7 +1,8 @@
 const express = require("express")
-const {initializeDatabase} = require("./controller")
+const {initializeDatabase, addAudioFile} = require("./controller")
 const router = express.Router()
 
-router.route("/").get((initializeDatabase));
+router.route("/").post(initializeDatabase);
+router.route("/send").post(addAudioFile);
 
 module.exports = router

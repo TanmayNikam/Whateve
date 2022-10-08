@@ -9,6 +9,6 @@ app.use(cors())
 
 app.use("/acr", acr)
 
-app.listen(8000, ()=>{
+app.listen(8000, '0.0.0.0', ()=>{
     console.log("Server started")
 })
