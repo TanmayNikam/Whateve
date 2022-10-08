@@ -32,7 +32,7 @@ const Recorder = () => {
         const audioFile = new File([blob], "recording", { type: ".wav" });
         formData.set("recording", audioFile);
         const lookupResponse = await recognizeAudio(formData);
-        if (lookupResponse[0]) setResponse(lookupResponse);
+        if (lookupResponse[0]) setResponse(lookupResponse[1]);
 
         setBlobUrl(blobURL);
         setIsRecording(false);
