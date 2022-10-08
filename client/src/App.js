@@ -6,6 +6,7 @@ import Recorder from "./components/recorder";
 function App() {
   return (
     <div className="App">
+      <Main />
       <Recorder />
     </div>
   );

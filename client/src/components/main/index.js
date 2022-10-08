@@ -7,8 +7,8 @@ const Main = () => {
   const fileHandler = async (event) => {
     const formData = new FormData();
     formData.set("mediaFile", event.target.files[0]);
-    console.log(formData);
-    // uploadFile(formData);
+    // console.log(formData);
+    await uploadFile(formData);
   };
 
   return (
