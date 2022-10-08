@@ -1,7 +1,7 @@
 const BASE_URL = require("./utils")
 const axios = require("axios")
 const FormData = require("form-data")
-const Blob  = require("blob")
+const Blob  = require("node-blob")
 const fs = require("fs")
 
 exports.initializeDatabase = async (req, res)=>{
@@ -28,18 +28,21 @@ exports.addAudioFile = async(req, res)=>{
     try{
         const data = new FormData()
         const blob = new Blob([JSON.stringify({
-            "key_content_id": 1,
+            "key_content_id": "1",
           })], {
           type: 'application/json'
         })
-        data.append("metadata", blob)
-        onsole.log("GG")
+        data.append("metadata", JSON.stringify(blob))
         data.append("audioFile", fs.createReadStream("./sample_audio.wav"))
         await axios.post(BASE_URL+"/acr/add-file",data,{
             headers: {
                 Auth: "5ac835798aa493440692c54c7ab76161f06c1b88" ,
                 "Content-Type": "multipart/form-data"
             }
+        })
+        res.status(200).json({
+            success: true,
+            message: "Audio Uploaded"
         })
 
     }catch(err){
